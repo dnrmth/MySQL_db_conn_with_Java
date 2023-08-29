@@ -18,7 +18,7 @@ public class dbConnection {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet rs = statement.executeQuery(query);
             while(rs.next()){
-                System.out.println("O país: " + rs.getString("Name") + ". Fala a língua: " + rs.getString("Language"));
+                System.out.println("Country: " + rs.getString("Name") + ". Official language: " + rs.getString("Language"));
                 Connection conn = DriverManager.getConnection(dbURL, dbName, dbPassword);
                 conn.close();
             }
