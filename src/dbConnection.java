@@ -1,4 +1,3 @@
-
 import java.sql.*;
 
 public class dbConnection {
@@ -10,17 +9,15 @@ public class dbConnection {
 
         try {
             Connection connection = DriverManager.getConnection(dbURL, dbName, dbPassword);
-            String query =  "SELECT c.Code, c.Name, cl.Language "
+            String query = "SELECT c.Code, c.Name, cl.Language "
                     + "FROM Country c "
                     + "JOIN CountryLanguage cl ON c.Code = cl.CountryCode "
                     + "where cl.IsOfficial = 'T'"
                     + "LIMIT 10";
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet rs = statement.executeQuery(query);
-            while(rs.next()){
+            while (rs.next()) {
                 System.out.println("Country: " + rs.getString("Name") + ". Official language: " + rs.getString("Language"));
-                Connection conn = DriverManager.getConnection(dbURL, dbName, dbPassword);
-                conn.close();
             }
             connection.close();
         } catch (SQLException e) {
