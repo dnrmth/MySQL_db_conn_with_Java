@@ -1,11 +1,16 @@
 import java.sql.*;
+import java.util.Scanner;
 
 public class dbConnection {
     public static void main(String[] args) {
 
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the database password: ");
+
         String dbURL = "jdbc:mysql://localhost:3306/world";
         String dbName = "root";
-        String dbPassword = "21091998";
+        String dbPassword = scanner.next();
 
         try {
             Connection connection = DriverManager.getConnection(dbURL, dbName, dbPassword);
